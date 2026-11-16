@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/*
+ * Sistema visual de TECTUM STUDIO.
+ * Idea de layout: barra lateral fija + lienzo de trabajo; el recorrido idea → software
+ * (la "pista de etapas") es el único elemento con protagonismo, el resto se mantiene sobrio.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --color-canvas: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-subtle: #f1f3f6;
+  --color-line: #e5e7eb;
+  --color-line-strong: #d3d8e0;
+  --color-ink: #202938;
+  --color-muted: #677489;
+
+  --color-brand: #6366f1;
+  --color-brand-strong: #4f52e0;
+  --color-brand-soft: #eef0fe;
+  --color-brand-ink: #4649d8;
+
+  --color-teal: #14b8a6;
+  --color-teal-soft: #e4f6f3;
+  --color-teal-ink: #0f766e;
+
+  --color-ok-soft: #e9f6ee;
+  --color-ok-ink: #17803d;
+  --color-warn-soft: #fcf3e1;
+  --color-warn-ink: #a8590a;
+  --color-danger: #d43c3c;
+  --color-danger-soft: #fcecec;
+  --color-danger-ink: #b42323;
+
+  --shadow-card: 0 1px 2px rgb(32 41 56 / 0.04);
+  --shadow-pop: 0 12px 32px -8px rgb(32 41 56 / 0.18), 0 2px 6px rgb(32 41 56 / 0.06);
+}
+
+.dark {
+  color-scheme: dark;
+  --color-canvas: #0e1117;
+  --color-surface: #151a22;
+  --color-subtle: #1c222c;
+  --color-line: #262d39;
+  --color-line-strong: #364050;
+  --color-ink: #e7eaf0;
+  --color-muted: #94a0b4;
+
+  --color-brand: #6d70f5;
+  --color-brand-strong: #8285f8;
+  --color-brand-soft: #1e2142;
+  --color-brand-ink: #a9b1fb;
+
+  --color-teal: #2dd4bf;
+  --color-teal-soft: #0f2a29;
+  --color-teal-ink: #5eead4;
+
+  --color-ok-soft: #11261a;
+  --color-ok-ink: #5fd68b;
+  --color-warn-soft: #2a2010;
+  --color-warn-ink: #f2b84b;
+  --color-danger: #e25555;
+  --color-danger-soft: #2b1416;
+  --color-danger-ink: #f48a8a;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-pop: 0 12px 32px -8px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.3);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  button,
+  [role="button"],
+  select,
+  summary {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand) 22%, transparent);
+  }
+  ::placeholder {
+    color: color-mix(in srgb, var(--color-muted) 75%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.35;
+  }
+}

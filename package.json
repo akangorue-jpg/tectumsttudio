@@ -1,0 +1,38 @@
+{
+  "name": "tectum-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TECTUM STUDIO — plataforma de desarrollo de software asistida por IA",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node --disable-warning=ExperimentalWarning dist/server.mjs",
+    "dev": "node scripts/build.mjs && node --disable-warning=ExperimentalWarning dist/server.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json",
+    "test": "node --disable-warning=ExperimentalWarning --import tsx --test tests/*.test.ts",
+    "test:e2e": "node tests/e2e.mjs"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.63.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3"
+  }
+}
